@@ -1,0 +1,15 @@
+beautifulsoup4
+blinker
+certifi
+charset-normalizer
+click
+Flask
+Flask-Cors
+idna
+itsdangerous
+Jinja2
+MarkupSafe
+requests
+soupsieve
+urllib3
+Werkzeug

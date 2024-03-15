@@ -1,2 +1,4 @@
 /src/venv
 .idea
+.DS_Store
+/src/__pycache__

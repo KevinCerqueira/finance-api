@@ -13,3 +13,4 @@ requests
 soupsieve
 urllib3
 Werkzeug
+gunicorn

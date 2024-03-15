@@ -17,7 +17,6 @@ class Scrap:
 
             return soup
         except Exception as e:
-            self.log.error(str(e))
             return None
 
     def get_finance(self, name: str) -> dict | None:
@@ -28,7 +27,11 @@ class Scrap:
         div_value = response.find("div", {"class": "YMlKec fxKbKc"})
         value = None
         if div_value is not None:
-            value = (div_value.text.replace(",", "")).replace("R$", "")
+            value = div_value.text.replace(",", "")
+            if "R$" in value:
+                value = value.replace("R$", "")
+            if value is not None:
+                value = float(value)
 
         div_about = response.find("div", {"class": "bLLb2d"})
         about = None

@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/stock")
-class StockController: Controller() {
+@RequestMapping("/api/v1/stock")
+class StockController {
 
     @GetMapping("/{stockName}")
     fun getStock(

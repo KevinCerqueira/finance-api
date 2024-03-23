@@ -45,10 +45,9 @@ class CrawlerTest {
         val crawler = Mockito.spy(Crawler::class.java)
         Mockito.doReturn(doc).`when`(crawler).request(Mockito.anyString())
 
-        val stock = crawler.getStock("MISSING")
-        assertNull(stock?.name)
-        assertNull(stock?.price)
-        assertNull(stock?.about)
+        org.junit.jupiter.api.assertThrows<Exception>("Invalid stock name MISSING") {
+            crawler.getStock("MISSING")
+        }
     }
 
     @Test

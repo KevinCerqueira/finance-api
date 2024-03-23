@@ -56,3 +56,25 @@ Response:
     }
 }
 ```
+
+### Error Handling
+
+The API provides informative error messages to assist in troubleshooting. Here are some examples of the error responses:
+
+- When a stock name is invalid or not found:
+
+```json
+{
+  "success": false,
+  "message": "Invalid stock name 123abcd"
+}
+```
+
+- When the stock's information cannot be retrieved due to a processing error or if the stock is not found on the source site:
+```json
+{
+  "success": false,
+  "message": "Stock not found at https://www.google.com/finance/quote/exampleStockName"
+}
+```
+Ensure that your application handles these errors gracefully to improve user experience.

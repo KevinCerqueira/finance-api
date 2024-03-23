@@ -85,6 +85,10 @@ class Crawler {
             url = "$baseUrl$rightStockName"
             val newResponse = request(url)
             response = newResponse ?: response
+
+            if (rightStockName.isNullOrEmpty() || rightStockName == "null") {
+                throw Exception("Invalid stock name $stock")
+            }
         }
 
         var name: String? = getName(response)

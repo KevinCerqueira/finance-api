@@ -16,13 +16,18 @@ class StockController {
         @PathVariable(required = false) stockName: String
     ): Response? {
         val crawler = Crawler()
-        val stock = crawler.getStock(stockName)
-        val success: Boolean = stock?.name != null && !stock.name.isNullOrEmpty()
 
-        return if (success) {
-            ResponseSuccess(data = stock)
-        } else {
-            ResponseError(message = "STOCK NOT FOUND AT ${stock?.link}.")
+        return try {
+            val stock = crawler.getStock(stockName)
+            val success: Boolean = stock?.price != null && !stock.name.isNullOrEmpty()
+
+            if (success) {
+                ResponseSuccess(data = stock)
+            } else {
+                ResponseError(message = "Stock not found at ${stock?.link}.")
+            }
+        } catch (e: Exception) {
+            ResponseError(message = e.message)
         }
     }
 
